@@ -1,6 +1,7 @@
 <h2>API NodeJS cho các cuộc tấn công layer 7</h2>
 
-<h4>API này rất an toàn và nhanh (gấp đôi thời gian ping giữa API và chương trình phụ trợ, tức là ping là 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công)</h4>
+<h4>API này rất an toàn và nhanh (gấp đôi thời gian ping giữa API và chương trình phụ trợ</h4>
+<h4>tức là ping 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công</h4>
 
 
 <h1>Cài đặt:</h1>
