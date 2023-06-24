@@ -4,7 +4,7 @@ const net = require('net');
 const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 const blackList = ['\'', '"', '[', ']', '{', '}', '(', ')', ';', '|', '&', '%', '#', '@'];
 
-//api configuration
+// cấu hình api
 const api_port = 8888; // Cổng API
 const socket_token = "SOCKET_TOKEN"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
 const api_key = "API_KEY"; // Khóa API của bạn
