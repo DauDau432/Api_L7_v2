@@ -45,10 +45,10 @@ npm i express
 
 ```js
 const api_port = 8888; //API Port
-const socket_token = "SOCKET_TOKEN"; // TCP Socket token, use random numbers/letters
+const socket_token = "SOCKET_TOKEN"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
 const api_key = "API_KEY"; // your API Key
-const domain_lock = false; // lock api to only be used from a specific domain
-const api_domain = 'example.com'; // your API domain (if domain_lock is set to true)
+const domain_lock = false; // khóa api để chỉ được sử dụng từ một tên miền cụ thể
+const api_domain = 'example.com'; // miền API của bạn (nếu domain_lock được đặt thành true)
 ```
 
 <h3>Update socket.js:</h3><br>
