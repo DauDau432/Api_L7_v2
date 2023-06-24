@@ -1,15 +1,15 @@
-<h2>NodeJS API for Layer 7 attacks</h2>
+<h2>API NodeJS cho các cuộc tấn công Lớp 7</h2>
 
-<h3>Coded by forky (tg: @yfork)</h3>
+<h3>Được mã hóa bởi forky (tg: @yfork)</h3>
 
-<h4>This API is very secure and fast (takes 2x the ping between the API and the backend, i.e. the ping is 60ms it will take only 120ms to launch the attack)</h4>
+<h4>API này rất an toàn và nhanh (gấp đôi thời gian ping giữa API và chương trình phụ trợ, tức là ping là 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công)</h4>
 
 
-<h1>Installation:</h1>
+<h1>Cài đặt:</h1>
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-sudo apt -y install nodejs
+sudo yum -y install nodejs
 npm i express
 ```
 
@@ -60,12 +60,12 @@ const socket_token = "SOCKET_TOKEN";
 const allowed_ips = ['1.1.1.1'];
 ```
 
-## After that, upload socket.js to the attack servers and upload api.js, servers.json and commands.json to the API server
+## Sau đó, tải socket.js lên máy chủ tấn công và tải api.js, servers.json và commands.json lên máy chủ API
 
 
-### Reverse Proxy
+### Proxy đảo ngược
 
-Making a reverse proxy using Nginx to use your API is recommended:
+Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:
 
 ```conf
 server {
@@ -77,17 +77,17 @@ server {
 }
 ```
 
-Replace `'http://backend:3000/api/attack'` with your API server URL
+Thay thế `'http://backend:3000/api/attack'` bằng URL máy chủ API của bạn
 
-### Using the API
+### Sử dụng API
 
-Send a GET request to the API using the required fields
+Gửi yêu cầu GET tới API bằng các trường bắt buộc
 
 GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=HTTPGET&server=alpha`
 
-You can set &server=all to launch to all servers
+Bạn có thể đặt &server=all để khởi chạy tới tất cả các máy chủ
 
-You can stop the attacks by sending a GET request to the API using &method=stop
+Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng &method=stop
 
 GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=stop&server=alpha`
 
