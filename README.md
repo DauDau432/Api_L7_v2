@@ -1,6 +1,4 @@
-<h2>API NodeJS cho các cuộc tấn công Lớp 7</h2>
-
-<h3>Được mã hóa bởi forky (tg: @yfork)</h3>
+<h2>API NodeJS cho các cuộc tấn công layer 7</h2>
 
 <h4>API này rất an toàn và nhanh (gấp đôi thời gian ping giữa API và chương trình phụ trợ, tức là ping là 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công)</h4>
 
@@ -60,7 +58,7 @@ const socket_token = "SOCKET_TOKEN";
 const allowed_ips = ['1.1.1.1'];
 ```
 
-## Sau đó, tải socket.js lên máy chủ tấn công và tải api.js, servers.json và commands.json lên máy chủ API
+## Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API
 
 
 ### Proxy đảo ngược
@@ -85,9 +83,9 @@ Gửi yêu cầu GET tới API bằng các trường bắt buộc
 
 GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=HTTPGET&server=alpha`
 
-Bạn có thể đặt &server=all để khởi chạy tới tất cả các máy chủ
+Bạn có thể đặt `&server=all` để khởi chạy tới tất cả các máy chủ
 
-Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng &method=stop
+Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng `&method=stop`
 
 GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=stop&server=alpha`
 
