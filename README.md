@@ -46,9 +46,9 @@ npm i express
 <h3>Update api.js:</h3><br>
 
 ```js
-const api_port = 8888; //API Port
+const api_port = 8888; // Cổng API
 const socket_token = "SOCKET_TOKEN"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
-const api_key = "API_KEY"; // your API Key
+const api_key = "API_KEY"; // Khóa API của bạn
 const domain_lock = false; // khóa api để chỉ được sử dụng từ một tên miền cụ thể
 const api_domain = 'example.com'; // miền API của bạn (nếu domain_lock được đặt thành true)
 ```
