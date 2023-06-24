@@ -6,12 +6,12 @@ const blackList = ['\'', '"', '[', ']', '{', '}', '(', ')', ';', '|', '&', '%', 
 
 //api configuration
 const api_port = 8888; //API Port
-const socket_token = "SOCKET_TOKEN"; // TCP Socket token, use random numbers/letters
+const socket_token = "SOCKET_TOKEN"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
 const api_key = "API_KEY"; // your API Key
-const domain_lock = false; // lock api to only be used from a specific domain
-const api_domain = 'example.com'; // your API domain (if domain_lock is set to true)
+const domain_lock = false; // khóa api để chỉ được sử dụng từ một tên miền cụ thể
+const api_domain = 'example.com'; // miền API của bạn (nếu domain_lock được đặt thành true)
 
-//data for the API
+//dữ liệu cho API
 const servers = require('./servers.json');
 const commands = require('./commands.json');
 
@@ -29,11 +29,11 @@ app.get(`/api/attack`, async (req, res) => {
         api_key: req.query.api_key || undefined,
     };
 
-    //checks for API security
+    // kiểm tra bảo mật API
     if (field.api_key !== api_key) return res.json({ status: 500, data: `invalid api key` });
     if (domain_lock && req.hostname !== api_domain) return res.json({ status: 500, data: `request is not coming from an authorized domain` });
 
-    //check fields
+    //kiểm tra các trường
     const containsBlacklisted = blackList.some(char => field.host.includes(char));
     if (!field.host || !urlRegex.test(field.host) || containsBlacklisted) return res.json({ status: 500, data: `host needs to be a valid URL` });
     if (!field.time || isNaN(field.time) || field.time > 86400) return res.json({ status: 500, data: `time needs to be a number between 0-65535` });
