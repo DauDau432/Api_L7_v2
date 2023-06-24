@@ -62,7 +62,7 @@ app.get(`/api/attack`, async (req, res) => {
         if (!response.includes("success")) {
             return res.json({
                 status: 500,
-                message: 'failed to start attack',
+                message: 'thất bại trong việc bắt đầu cuộc tấn công',
             });
         }
 
@@ -83,17 +83,17 @@ app.get(`/api/attack`, async (req, res) => {
             }
         });
     } catch (e) {
-        console.log(`attack failed on ${field.host} using method ${field.method}`);
+        console.log(`tấn công không thành công vào ${field.host} bằng phương thức ${field.method}`);
 
         return res.json({
             status: 200,
-            message: 'failed to start attack',
+            message: 'thất bại trong việc bắt đầu cuộc tấn công',
         });
     }
 
 });
 
-app.listen(api_port, () => console.log(`Layer4 Socket API started on port ${api_port}`));
+app.listen(api_port, () => console.log(`API Socket Layer4 đã bắt đầu trên cổng ${api_port}`));
 
 function sendData(serverName, data) {
     return new Promise((resolve, reject) => {
@@ -130,7 +130,7 @@ function sendData(serverName, data) {
 
 function sendToServer(server, data) {
     return new Promise((resolve, reject) => {
-        console.log(`Sending attack in ${server.name}`);
+        console.log(`Gửi cuộc tấn công trong ${server.name}`);
 
         const socket = new net.Socket();
 
