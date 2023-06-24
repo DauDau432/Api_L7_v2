@@ -8,7 +8,7 @@
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-sudo yum -y install nodejs
+sudo apt -y install nodejs
 npm i express
 ```
 
