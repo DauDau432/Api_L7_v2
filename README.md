@@ -88,7 +88,9 @@ const allowed_ips = ['1.1.1.1'];
 ```
 
 #### Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API
+
 ```cd /usr/share/nginx/html```
+
 ```js
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/api.js
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/commands.json
