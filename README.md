@@ -82,7 +82,7 @@ const api_domain = 'example.com'; // miền API của bạn (nếu domain_lock �
 <h3>Update socket.js:</h3><br>
 
 ```js
-const socket_port = 3000;
+const socket_port = 8888;
 const socket_token = "SOCKET_TOKEN";
 const allowed_ips = ['1.1.1.1'];
 ```
@@ -94,7 +94,7 @@ const allowed_ips = ['1.1.1.1'];
 
 Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:
 
-nano /etc/nginx/nginx_cond
+```nano /etc/nginx/nginx_conf```
 ```conf
 server {
     listen 80;
@@ -109,13 +109,12 @@ Thay thế `'http://backend:8888/api/attack'` bằng IP máy chủ API của b�
 
 ### Sử dụng API
 
-Gửi yêu cầu GET tới API bằng các trường bắt buộc
+Gửi yêu cầu tới API bằng các trường bắt buộc
 
-GET `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=HTTPGET&server=1`
+`http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=HTTPGET&server=1`
 
 Bạn có thể đặt `&server=all` để khởi chạy tới tất cả các máy chủ
 
 Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng `&method=stop`
 
-GET `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=stop&server=1`
-
+`http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=stop&server=1`
