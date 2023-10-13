@@ -26,9 +26,9 @@ nvm use 14.17.3
 npm i express
 ```
 
-<h3>cài đặt nginx</h3>h3>
+<h3>cài đặt nginx</h3>
 
-<h3>tắt tường lửa</h3>h3
+<h3>tắt tường lửa</h3>
 
 ***centos***
 ```sh
@@ -87,7 +87,7 @@ const socket_token = "SOCKET_TOKEN";
 const allowed_ips = ['1.1.1.1'];
 ```
 
-<h3> Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API</h3>
+#### Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API
 
 ```js
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/api.js
@@ -107,7 +107,7 @@ screen -S api -dm node api.js
 screen -S socket -dm node socket.js
 ```
 
-<h3> Proxy đảo ngược</h3>h3
+<h3> Proxy đảo ngược</h3>
 
 ***Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:***
 
