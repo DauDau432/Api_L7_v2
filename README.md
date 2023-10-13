@@ -88,7 +88,22 @@ const allowed_ips = ['1.1.1.1'];
 ```
 
 ## Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API
+```js
+wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/api.js
+wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/commands.json
+wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/servers.json
+```
+```js
+wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/socket.js
+```
 
+### Khởi động
+```js
+screen -S api -dm node api.js
+```
+```js
+screen -S socket -dm node socket.js
+```
 
 ### Proxy đảo ngược
 
@@ -113,8 +128,6 @@ Gửi yêu cầu tới API bằng các trường bắt buộc
 
 `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=HTTPGET&server=1`
 
-Bạn có thể đặt `&server=all` để khởi chạy tới tất cả các máy chủ
-
-Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng `&method=stop`
+Bạn có thể dừng các cuộc tấn công bằng cách gửi yêu cầu tới API sử dụng `&method=stop`
 
 `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=stop&server=1`
