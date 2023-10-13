@@ -131,7 +131,7 @@ function sendData(serverName, data) {
 
 function sendToServer(server, data) {
     return new Promise((resolve, reject) => {
-        console.log(`Gửi yêu cầu đến máy chủ ${server.name}`);
+        console.log(`\nGửi yêu cầu đến máy chủ ${server.name}`);
 
         const socket = new net.Socket();
 
