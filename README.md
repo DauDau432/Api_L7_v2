@@ -6,10 +6,36 @@
 
 <h1>Cài đặt:</h1>
 
+cài đặt nodejs
+
+ubuntu 
 ```sh
-curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-sudo apt -y install nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm install 14.17.3
+nvm use 14.17.3
 npm i express
+```
+
+centos
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.nvm/nvm.sh
+nvm install 14.17.3
+nvm use 14.17.3
+npm i express
+```
+
+cài đặt nginx
+
+tắt tường lửa
+
+centos
+```sh
+sudo service iptables stop
+sudo chkconfig iptables off
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
 ```
 
 <h1>Setup:</h1>
@@ -19,12 +45,12 @@ npm i express
 ```json
 {
     "alpha": {
-        "name": "alpha",
+        "name": "1",
         "ip": "1.1.1.1",
         "port": 3000
     },
     "beta": {
-        "name": "beta",
+        "name": "2",
         "ip": "2.2.2.2",
         "port": 3000
     }
@@ -68,27 +94,28 @@ const allowed_ips = ['1.1.1.1'];
 
 Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:
 
+nano /etc/nginx/nginx_cond
 ```conf
 server {
     listen 80;
     server_name api.yourdomain.com;
     location /api/attack {
-        proxy_pass http://backend:3000/api/attack;
+        proxy_pass http://backend:8888/api/attack;
     }
 }
 ```
 
-Thay thế `'http://backend:3000/api/attack'` bằng URL máy chủ API của bạn
+Thay thế `'http://backend:8888/api/attack'` bằng IP máy chủ API của bạn
 
 ### Sử dụng API
 
 Gửi yêu cầu GET tới API bằng các trường bắt buộc
 
-GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=HTTPGET&server=alpha`
+GET `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=HTTPGET&server=1`
 
 Bạn có thể đặt `&server=all` để khởi chạy tới tất cả các máy chủ
 
 Bạn có thể ngăn chặn các cuộc tấn công bằng cách gửi yêu cầu GET tới API sử dụng `&method=stop`
 
-GET `https://api.yourdomain.com/api/attack?host=https://website.com&time=120&method=stop&server=alpha`
+GET `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=stop&server=1`
 
