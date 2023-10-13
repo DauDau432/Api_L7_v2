@@ -62,18 +62,18 @@ app.get(`/api/attack`, async (req, res) => {
         if (!response.includes("success")) {
             return res.json({
                 status: 500,
-                message: 'start cuộc tấn công không thành công',
+                message: 'gửi yêu cầu không thành công',
             });
         }
 
         const elapsedTime = process.hrtime(startTime);
         const elapsedTimeMs = elapsedTime[0] * 1000 + elapsedTime[1] / 1000000;
 
-        console.log(`Tấn công mục tiêu ${field.host} bằng phương pháp ${field.method}. Thời gian: ${elapsedTimeMs.toFixed(2)} giây`);
+        console.log(`gửi yêu cầu thành công mục tiêu: ${field.host}, phương thức: ${field.method}, Thời gian: ${elapsedTimeMs.toFixed(2)} giây`);
 
         return res.json({
             status: 200,
-            message: 'cuộc tấn công start thành công',
+            message: 'gửi yêu cầu thành công',
             id: attackid,
             elapsed_time: elapsedTimeMs.toFixed(2),
             data: {
@@ -83,17 +83,17 @@ app.get(`/api/attack`, async (req, res) => {
             }
         });
     } catch (e) {
-        console.log(`tấn công không thành công mục tiêu ${field.host} bằng phương pháp ${field.method}`);
+        console.log(`gửi yêu cầu không thành công mục tiêu: ${field.host}, phương thức: ${field.method}`);
 
         return res.json({
             status: 200,
-            message: 'start cuộc tấn công không thành công',
+            message: 'gửi yêu cầu không thành công',
         });
     }
 
 });
 
-app.listen(api_port, () => console.log(`API socket Layer7 đã start trên cổng ${api_port}`));
+app.listen(api_port, () => console.log(`API socket Layer7 đã chạy trên cổng ${api_port}`));
 
 function sendData(serverName, data) {
     return new Promise(async (resolve, reject) => {
