@@ -6,10 +6,10 @@ const blackList = ['\'', '"', '[', ']', '{', '}', '(', ')', ';', '|', '&', '%', 
 
 // cấu hình api
 const api_port = 8888; // Cổng API
-const socket_token = "SOCKET_TOKEN"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
-const api_key = "API_KEY"; // Khóa API của bạn
-const domain_lock = false; // khóa api để chỉ được sử dụng từ một tên miền cụ thể
-const api_domain = 'example.com'; // miền API của bạn (nếu domain_lock được đặt thành true)
+const socket_token = "daukute432000"; // Mã thông báo TCP Socket, sử dụng số/chữ cái ngẫu nhiên
+const api_key = "daukute"; // Khóa API của bạn
+const domain_lock = true; // khóa api để chỉ được sử dụng từ một tên miền cụ thể
+const api_domain = 'l7.daukute.us'; // miền API của bạn (nếu domain_lock được đặt thành true)
 
 //dữ liệu cho API
 const servers = require('./servers.json');
@@ -62,14 +62,14 @@ app.get(`/api/attack`, async (req, res) => {
         if (!response.includes("success")) {
             return res.json({
                 status: 500,
-                message: 'thất bại trong việc bắt đầu cuộc tấn công',
+                message: 'start cuộc tấn công không thành công',
             });
         }
 
         const elapsedTime = process.hrtime(startTime);
         const elapsedTimeMs = elapsedTime[0] * 1000 + elapsedTime[1] / 1000000;
 
-        console.log(`Attack started on ${field.host} using method ${field.method}. Time elapsed: ${elapsedTimeMs.toFixed(2)} ms`);
+        console.log(`Tấn công mục tiêu ${field.host} bằng phương pháp ${field.method}. Thời gian: ${elapsedTimeMs.toFixed(2)} ms`);
 
         return res.json({
             status: 200,
@@ -83,17 +83,17 @@ app.get(`/api/attack`, async (req, res) => {
             }
         });
     } catch (e) {
-        console.log(`tấn công không thành công vào ${field.host} bằng phương thức ${field.method}`);
+        console.log(`tấn công không thành công mục tiêu ${field.host} bằng phương pháp ${field.method}`);
 
         return res.json({
             status: 200,
-            message: 'thất bại trong việc bắt đầu cuộc tấn công',
+            message: 'start cuộc tấn công không thành công',
         });
     }
 
 });
 
-app.listen(api_port, () => console.log(`API Socket Layer4 đã bắt đầu trên cổng ${api_port}`));
+app.listen(api_port, () => console.log(`API socket Layer7 đã start trên cổng ${api_port}`));
 
 function sendData(serverName, data) {
     return new Promise((resolve, reject) => {
@@ -130,7 +130,7 @@ function sendData(serverName, data) {
 
 function sendToServer(server, data) {
     return new Promise((resolve, reject) => {
-        console.log(`Gửi cuộc tấn công trong ${server.name}`);
+        console.log(`Gửi cuộc tấn công đến máy chủ ${server.name}`);
 
         const socket = new net.Socket();
 
