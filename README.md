@@ -2,7 +2,7 @@
 
 <h4>API này rất an toàn và nhanh gấp đôi thời gian ping giữa API và chương trình phụ trợ</h4>
 <h4>tức là ping 60 mili giây, sẽ chỉ mất 120 mili giây để khởi chạy cuộc tấn công</h4>
-
+<h4>có key quản lý api attack và dừng từng toàn bộ cuộc tấn công của 1 server</h4>
 
 <h2>Cài đặt:</h2>
 
